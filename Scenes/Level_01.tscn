@@ -31,6 +31,3 @@ player = "_2"
 [node name="Power_Up" parent="." instance=ExtResource( 4 )]
 position = Vector2( 143, 149 )
 mass = 1.0
-
-[connection signal="shoot" from="Player_1" to="." method="_on_Tank_shoot"]
-[connection signal="shoot" from="Player_2" to="." method="_on_Tank_shoot"]

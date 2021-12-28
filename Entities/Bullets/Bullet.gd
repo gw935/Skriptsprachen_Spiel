@@ -22,18 +22,15 @@ func _process(delta):
 func _on_Bullet_body_entered(body):
 	if body.has_method('take_damage'):
 		body.take_damage(damage)
-	# fuer Kisten und so
-	if body.has_method('destroy'):
-		body.destroy(damage)
 	deleteBullet()
 
 
 # wird aufgerufen, wenn die Bullet mit etwas kollidiert
 # Explosionsanimation etc.
 func deleteBullet():
-	print("bullet deleted")
 	queue_free()
 
 
 func _on_Timer_timeout():
+	print("bullet despawn")
 	deleteBullet()

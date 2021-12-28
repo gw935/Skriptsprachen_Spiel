@@ -1,24 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Entities/Tank.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Map.gd" type="Script" id=2]
-[ext_resource path="res://Entities/Bullets/StrongerBullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/PowerUps/Stronger_Bullet_Pickup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Obstacles/Obstacle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Bullet.png" type="Texture" id=5]
+[ext_resource path="res://Entities/Obstacles/ItemCrate.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1.9887, 2 )
 
 [node name="Test_Level" type="Node2D"]
-script = ExtResource( 2 )
 
 [node name="Player1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 89, 113 )
-PowerBullet = ExtResource( 3 )
 
 [node name="Player2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 408, 118 )
 player = "_2"
-PowerBullet = ExtResource( 3 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 253, 145 )
@@ -35,5 +33,46 @@ texture = ExtResource( 5 )
 scale = Vector2( 5.53125, 40 )
 shape = SubResource( 1 )
 
-[connection signal="shoot" from="Player1" to="." method="_on_Tank_shoot"]
-[connection signal="shoot" from="Player2" to="." method="_on_Tank_shoot"]
+[node name="Stronger_Bullet_Pickup" parent="." instance=ExtResource( 3 )]
+position = Vector2( 149, 194 )
+collision_mask = 3
+
+[node name="Stronger_Bullet_Pickup2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 353, 202 )
+collision_mask = 3
+
+[node name="Obstacle" parent="." instance=ExtResource( 4 )]
+position = Vector2( 162, 129 )
+
+[node name="Obstacle2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 184, 128 )
+
+[node name="Obstacle3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 205, 127 )
+
+[node name="ItemCrate" parent="." instance=ExtResource( 6 )]
+position = Vector2( 126, 275 )
+
+[node name="ItemCrate2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 457, 173 )
+
+[node name="ItemCrate3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 160, 72 )
+
+[node name="ItemCrate4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 196, 77 )
+
+[node name="ItemCrate5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 162, 99 )
+
+[node name="ItemCrate6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 194, 101 )
+
+[node name="ItemCrate7" parent="." instance=ExtResource( 6 )]
+position = Vector2( 126, 71 )
+
+[node name="ItemCrate8" parent="." instance=ExtResource( 6 )]
+position = Vector2( 132, 94 )
+
+[node name="ItemCrate9" parent="." instance=ExtResource( 6 )]
+position = Vector2( 133, 123 )

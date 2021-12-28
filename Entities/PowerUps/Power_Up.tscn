@@ -14,11 +14,10 @@ extents = Vector2( 2, 2 )
 
 [node name="Power_Up" type="RigidBody2D"]
 collision_layer = 8
-collision_mask = 3
+collision_mask = 11
 mass = 51.0204
 physics_material_override = SubResource( 3 )
 script = ExtResource( 2 )
-speed = 50
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

@@ -1,0 +1,17 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://ItemCrate.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Obstacles/Obstacle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Itemcrate.png" type="Texture" id=3]
+[ext_resource path="res://Entities/PowerUps/Stronger_Bullet_Pickup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/PowerUps/Health_Power_Pickup.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/PowerUps/Speed_Power_Pickup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/PowerUps/Reload_Power_Pickup.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/PowerUps/Explosion_Power_Pickup.tscn" type="PackedScene" id=8]
+
+[node name="ItemCrate" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+Items = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ]
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 3 )

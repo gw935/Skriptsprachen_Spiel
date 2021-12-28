@@ -2,9 +2,15 @@ extends RigidBody2D
 
 var rng = RandomNumberGenerator.new()
 
-export var speed: int
+var speed = 50
 
-func _ready():
+export var healthIncrease: int
+export var speedIncrease: int
+export var reloadTimeDecrease: float
+export var ammoAmount: int
+export var bulletType: int
+
+func start():
 	rng.randomize()
 	# bewegt sich in random richtung
 	apply_impulse(Vector2(0,100), 
@@ -13,5 +19,6 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	if body != self:
-		# metode vom Body aufrufen um shit zu tun body.do_shit
-		queue_free()
+		if body.has_method('pickupItem'):
+			body.pickupItem(healthIncrease, speedIncrease, reloadTimeDecrease, ammoAmount, bulletType)
+			queue_free()

@@ -7,7 +7,7 @@
 script = ExtResource( 2 )
 speed = 200
 damage = 20
-time_alive = 5.0
+time_alive = 2.0
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 1.5, 1.5 )

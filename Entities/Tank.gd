@@ -1,7 +1,5 @@
 extends KinematicBody2D
 
-signal shoot
-
 export var player: String
 
 export var health: int
@@ -11,10 +9,11 @@ export var reloadTime: float
 export var invincibilityTime: float
 
 export (PackedScene) var Bullet
-export (PackedScene) var PowerBullet
+export (Array, PackedScene) var PickupBullet
 
 var can_shoot = true
 var ammo = 0
+var bulletIndex = -1
 
 var velocity = Vector2()
 
@@ -48,11 +47,15 @@ func shoot():
 		can_shoot = false
 		$Timer.start()
 		var dir = Vector2(1, 0).rotated($Body/Barrel.global_rotation)
-		if PowerBullet and ammo > 0:
-			emit_signal('shoot', PowerBullet, $Body/Barrel/Position2D.global_position, dir)
+		if ammo > 0 and bulletIndex != -1:
+			var newBullet = PickupBullet[bulletIndex].instance()
+			get_tree().get_root().add_child(newBullet)
+			newBullet.start($Body/Barrel/Position2D.global_position, dir)
 			ammo -= 1
 		else:
-			emit_signal('shoot', Bullet, $Body/Barrel/Position2D.global_position, dir)
+			var newBullet = Bullet.instance()
+			get_tree().get_root().add_child(newBullet)
+			newBullet.start($Body/Barrel/Position2D.global_position, dir)
 
 
 func _physics_process(delta):
@@ -69,3 +72,25 @@ func _on_Timer_timeout():
 
 func take_damage(damage):
 	health -= damage
+
+
+func pickupItem(healthIncrease, speedIncrease, reloadTimeDecrease, ammoAmount, bulletType):
+	health += healthIncrease
+	if speed + speedIncrease > 190:
+		speed = 190
+	else:
+		speed += speedIncrease
+	if reloadTime - reloadTimeDecrease < 0.5:
+		reloadTime = 0.5
+	else:
+		reloadTime -= reloadTimeDecrease
+		$Timer.wait_time = reloadTime
+	if bulletType != -1:
+		if bulletType == bulletIndex:
+			ammo += ammoAmount
+		else:
+			ammo = ammoAmount
+		bulletIndex = bulletType
+	else:
+		if bulletIndex != -1:
+			ammo += ammoAmount

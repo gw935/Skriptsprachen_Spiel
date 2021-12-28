@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Entities/Bullets/Bullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Bullets/StrongerBullet.gd" type="Script" id=2]
+
+[node name="StrongerBullet" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+speed = 200
+damage = 20
+time_alive = 5.0
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2( 1.5, 1.5 )
+
+[connection signal="area_entered" from="." to="." method="_on_StrongerBullet_area_entered"]

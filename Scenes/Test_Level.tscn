@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Entities/Tank.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Map.gd" type="Script" id=2]
 [ext_resource path="res://Entities/PowerUps/Stronger_Bullet_Pickup.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Obstacles/Obstacle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Bullet.png" type="Texture" id=5]
@@ -10,6 +11,7 @@
 extents = Vector2( 1.9887, 2 )
 
 [node name="Test_Level" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="Player1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 89, 113 )

@@ -1,5 +1,9 @@
 extends KinematicBody2D
 
+signal health_changed
+signal ammo_changed
+signal bulletIndex_changed
+
 export var player: String
 
 export var health: int
@@ -12,10 +16,11 @@ export (PackedScene) var Bullet
 export (Array, PackedScene) var PickupBullet
 
 var can_shoot = true
-var ammo = 0
-var bulletIndex = -1
+var ammo := 0 
+var bulletIndex := -1
 
 var velocity = Vector2()
+
 
 func _ready():
 	$Timer.wait_time = reloadTime
@@ -53,6 +58,7 @@ func shoot():
 			get_tree().get_root().add_child(newBullet)
 			newBullet.start($Body/Barrel/Position2D.global_position, dir)
 			ammo -= 1
+			emit_signal("ammo_changed", ammo)
 		else:
 			var newBullet = Bullet.instance()
 			get_tree().get_root().add_child(newBullet)
@@ -72,7 +78,8 @@ func _on_Timer_timeout():
 
 
 func take_damage(damage):
-	health -= damage
+	health = health - damage
+	emit_signal("health_changed", health)
 
 
 func pickupItem(healthIncrease, speedIncrease, reloadTimeDecrease, ammoAmount, bulletType):
@@ -95,3 +102,6 @@ func pickupItem(healthIncrease, speedIncrease, reloadTimeDecrease, ammoAmount, b
 	else:
 		if bulletIndex != -1:
 			ammo += ammoAmount
+	emit_signal("health_changed", health)
+	emit_signal("ammo_changed", ammo)
+	emit_signal("bulletIndex_changed", bulletIndex)

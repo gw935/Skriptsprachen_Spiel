@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Tank_shoot.wav-089be4c71abe42b390369703f0565399.sample"
+
+[deps]
+
+source_file="res://Assets/Explosions/Tank_shoot.wav"
+dest_files=[ "res://.import/Tank_shoot.wav-089be4c71abe42b390369703f0565399.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

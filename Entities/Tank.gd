@@ -46,6 +46,7 @@ func shoot():
 	if can_shoot:
 		can_shoot = false
 		$Timer.start()
+		$Sfx.play()
 		var dir = Vector2(1, 0).rotated($Body/Barrel.global_rotation)
 		if ammo > 0 and bulletIndex != -1:
 			var newBullet = PickupBullet[bulletIndex].instance()

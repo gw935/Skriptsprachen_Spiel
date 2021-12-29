@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Tank/Tank_Body.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Tank/Tank_Barrel.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Entities/Bullets/StrongerBullet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Entities/Bullets/Exploding_Bullet.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Crosshairs/crosshair_0.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Explosions/Tank_shoot.wav" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 6 )
@@ -45,5 +46,8 @@ shape = SubResource( 1 )
 [node name="Crosshair" type="Sprite" parent="."]
 position = Vector2( 100, 0 )
 texture = ExtResource( 8 )
+
+[node name="Sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

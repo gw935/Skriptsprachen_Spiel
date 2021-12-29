@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/TomWinandySFX_Explosions Volume I_CloseExplosion_18.wav-9ea053c41468f10b12d7c8ce92db3995.sample"
+
+[deps]
+
+source_file="res://Assets/Explosions/TomWinandySFX_Explosions Volume I_CloseExplosion_18.wav"
+dest_files=[ "res://.import/TomWinandySFX_Explosions Volume I_CloseExplosion_18.wav-9ea053c41468f10b12d7c8ce92db3995.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

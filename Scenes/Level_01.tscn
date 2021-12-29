@@ -23,11 +23,20 @@ tile_data = PoolIntArray( 131102, 7, 0, 131103, 7, 0, 131104, 7, 0, 196613, 8, 0
 [node name="Player_1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 98, 151 )
 
+[node name="Body" parent="Player_1" index="1"]
+modulate = Color( 0.054902, 1, 0, 1 )
+
 [node name="Player_2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 406, 150 )
 rotation = -3.14159
 player = "_2"
 
+[node name="Body" parent="Player_2" index="1"]
+modulate = Color( 1, 0, 0, 1 )
+
 [node name="Power_Up" parent="." instance=ExtResource( 4 )]
 position = Vector2( 143, 149 )
 mass = 1.0
+
+[editable path="Player_1"]
+[editable path="Player_2"]

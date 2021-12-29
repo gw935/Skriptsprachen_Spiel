@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Effects/Explosions/BulletHit.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Explosions/TomWinandySFX_Explosions Volume I_CloseExplosion_18.wav" type="AudioStream" id=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.335404, 0.590062, 0.732919, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0.990234, 0, 1, 1, 0.310547, 0, 1, 1, 0.849609, 0, 0.651515, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 2 )
+
+[node name="BulletHit" type="Particles2D"]
+emitting = false
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 3 )
+script = ExtResource( 1 )
+
+[node name="Sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+
+[connection signal="finished" from="Sfx" to="." method="_on_Sfx_finished"]

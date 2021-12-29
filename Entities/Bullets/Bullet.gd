@@ -1,5 +1,6 @@
 extends Area2D
 
+var BulletHit = preload("res://Effects/Explosions/BulletHit.tscn")
 
 export var speed: int
 export var damage: int
@@ -20,6 +21,10 @@ func _process(delta):
 
 
 func _on_Bullet_body_entered(body):
+	var bulletHit = BulletHit.instance()
+	get_tree().get_root().add_child(bulletHit)
+	bulletHit.position = self.global_position
+	bulletHit.start()
 	if body.has_method('take_damage'):
 		body.take_damage(damage)
 	deleteBullet()

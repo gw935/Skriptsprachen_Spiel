@@ -4,6 +4,8 @@ signal health_changed
 signal ammo_changed
 signal bulletIndex_changed
 
+signal tank_died
+
 export var player: String
 
 export var health: int
@@ -14,6 +16,8 @@ export var invincibilityTime: float
 
 export (PackedScene) var Bullet
 export (Array, PackedScene) var PickupBullet
+
+var Death = preload("res://Effects/Explosions/Exploding_Bullet_Explosion.tscn")
 
 var can_shoot = true
 var ammo := 0 
@@ -79,6 +83,14 @@ func _on_Timer_timeout():
 
 func take_damage(damage):
 	health = health - damage
+	
+	if health <= 0:
+		var death = Death.instance()
+		get_tree().get_root().add_child(death)
+		death.position = self.global_position
+		death.start()
+		emit_signal("tank_died", player)
+	
 	emit_signal("health_changed", health)
 
 

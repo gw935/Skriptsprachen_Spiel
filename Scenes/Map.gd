@@ -17,10 +17,21 @@ func _ready():
 	player_1.connect("health_changed", self, "_on_health_changed_player_1")
 	player_1.connect("ammo_changed", self, "_on_ammo_changed_player_1")
 	player_1.connect("bulletIndex_changed", self, "_on_bulletIndex_changed_player_1")
+	player_1.connect("tank_died", self, "_on_Tank_died")
 	
 	player_2.connect("health_changed", self, "_on_health_changed_player_2")
 	player_2.connect("ammo_changed", self, "_on_ammo_changed_player_2")
 	player_2.connect("bulletIndex_changed", self, "_on_bulletIndex_changed_player_2")
+	player_2.connect("tank_died", self, "_on_Tank_died")
+
+
+func _on_Tank_died(player):
+	if player == "_2":
+		print("Player 2 died")
+		ui.gameOver(1)
+	else:
+		print("Player 1 died")
+		ui.gameOver(2)
 
 
 func _on_health_changed_player_1(health):

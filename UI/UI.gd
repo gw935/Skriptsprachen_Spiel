@@ -1,4 +1,9 @@
-extends Control
+extends CanvasLayer
+
+
+func gameOver(player):
+	$CenterContainer/WinContainer/WinLabel.text = "Player " + str(player) + " Won"
+	$CenterContainer.show()
 
 
 func changeHealth(player, health):
@@ -26,3 +31,11 @@ func changeBulletType(player, type):
 		$ui_player_1_VBox/AmmoType.text = "Gun: " + str(gunType)
 	else:
 		$ui_player_2_VBox/AmmoType.text = "Gun: " + str(gunType)
+
+
+func _on_Menu_Button_pressed():
+	get_tree().change_scene("res://Scenes/TitleScreen/TitleScreen.tscn")
+
+
+func _on_Restart_Button_pressed():
+	get_tree().reload_current_scene()

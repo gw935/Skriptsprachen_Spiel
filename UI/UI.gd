@@ -23,6 +23,8 @@ func changeAmmo(player, ammo):
 func changeBulletType(player, type):
 	var gunType
 	match type:
+		-1:
+			gunType = ""
 		0:
 			gunType = "Strong"
 		1:

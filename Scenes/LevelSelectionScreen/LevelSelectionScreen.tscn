@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/LevelSelectionScreen/ReturnButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/LevelSelectionScreen/PlayButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/fonts/AlfaSlabOne-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Assets/Preview_Mapname.png" type="Texture" id=4]
+[ext_resource path="res://Assets/PreviewLevel/preview_desert.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/LevelSelectionScreen/LevelSelectionScreen.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/TitleScreen/FadeIn.tscn" type="PackedScene" id=6]
 
@@ -139,73 +139,69 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 108.0
+[node name="LevelLabel" type="Label" parent="."]
+margin_left = 1.0
 margin_top = 32.0
-margin_right = 531.0
-margin_bottom = 328.0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 423.0
-margin_bottom = 58.0
+margin_right = 639.0
+margin_bottom = 90.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = -3
 custom_fonts/font = SubResource( 2 )
-text = "TODO: Level Name"
+text = "Level_1"
+align = 1
+valign = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
-margin_top = 62.0
-margin_right = 423.0
-margin_bottom = 262.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 196.0
+margin_top = 90.0
+margin_right = 444.0
+margin_bottom = 324.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 248.0
+margin_bottom = 200.0
 alignment = 1
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
-margin_left = 87.0
-margin_right = 107.0
+[node name="leftButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_right = 20.0
 margin_bottom = 200.0
 text = "<"
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer"]
-margin_left = 111.0
-margin_right = 311.0
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+margin_left = 24.0
+margin_right = 224.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 200, 200 )
 rect_pivot_offset = Vector2( 100, 100 )
 texture = ExtResource( 4 )
 
-[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
-margin_left = 315.0
-margin_right = 335.0
+[node name="rightButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 228.0
+margin_right = 248.0
 margin_bottom = 200.0
 text = ">"
 
-[node name="PlayButton" parent="CenterContainer/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 266.0
-margin_right = 423.0
-margin_bottom = 296.0
+[node name="PlayButton" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 204.0
+margin_right = 248.0
+margin_bottom = 234.0
 rect_pivot_offset = Vector2( 90, 15 )
 custom_fonts/font = SubResource( 1 )
 
 [node name="ReturnButton" parent="." instance=ExtResource( 1 )]
 margin_left = 16.0
 margin_top = 315.0
-margin_right = 196.0
-margin_bottom = 345.0
-align = 0
+margin_right = 166.0
+margin_bottom = 352.0
+rect_min_size = Vector2( 150, 30 )
+flat = false
 
 [node name="FadeIn" parent="." instance=ExtResource( 6 )]
 visible = false
@@ -215,7 +211,9 @@ anims/fade_into_LevelScreen = SubResource( 4 )
 anims/fade_into_LevelSelectionScreen = SubResource( 3 )
 anims/fade_into_TitleScreen = SubResource( 3 )
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/leftButton" to="." method="_on_leftButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/rightButton" to="." method="_on_rightButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="ReturnButton" to="." method="_on_ReturnButton_pressed"]
 
 [editable path="FadeIn"]

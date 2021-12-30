@@ -1,6 +1,24 @@
 extends Control
 
-var selectedScreen = "res://Scenes/Level_01.tscn"
+var level = [
+	"res://Scenes/Level_01.tscn",
+	"res://Scenes/Test_Level.tscn",
+	"res://Scenes/Splitscreen.tscn"
+]
+var levelPictures = [
+	preload("res://Assets/PreviewLevel/preview_desert.png"),
+	preload("res://Assets/PreviewLevel/Preview_Mapname.png"),
+	preload("res://Assets/PreviewLevel/Preview_Mapname.png")
+]
+var levelNames = [
+	"Level_1",
+	"Test_Level",
+	"Splitscreen"
+]
+
+var titleScreen = "res://Scenes/TitleScreen/TitleScreen.tscn"
+
+var selectedScreen = 0
 
 
 func _on_PlayButton_pressed():
@@ -9,7 +27,7 @@ func _on_PlayButton_pressed():
 
 
 func changeToSelectedLevel():
-	get_tree().change_scene(selectedScreen)
+	get_tree().change_scene(level[selectedScreen])
 
 
 func _on_ReturnButton_pressed():
@@ -18,4 +36,23 @@ func _on_ReturnButton_pressed():
 
 
 func changeToTitleScreen():
-	get_tree().change_scene("res://Scenes/TitleScreen/TitleScreen.tscn")
+	get_tree().change_scene(titleScreen)
+
+
+
+func _on_leftButton_pressed():
+	if selectedScreen <= 0:
+		selectedScreen = level.size() - 1
+	else:
+		selectedScreen = selectedScreen - 1
+	$VBoxContainer/HBoxContainer/TextureRect.texture = levelPictures[selectedScreen]
+	$LevelLabel.text = levelNames[selectedScreen]
+
+
+func _on_rightButton_pressed():
+	if selectedScreen >= level.size() - 1:
+		selectedScreen = 0
+	else:
+		selectedScreen = selectedScreen + 1
+	$VBoxContainer/HBoxContainer/TextureRect.texture = levelPictures[selectedScreen]
+	$LevelLabel.text = levelNames[selectedScreen]

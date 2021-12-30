@@ -1,9 +1,20 @@
 extends Node2D
 
+var rng = RandomNumberGenerator.new()
+
 var player_1
 var player_2
 
 var ui
+
+var items = [
+	preload("res://Entities/PowerUps/Explosion_Power_Pickup.tscn"),
+	preload("res://Entities/PowerUps/Health_Power_Pickup.tscn"),
+	preload("res://Entities/PowerUps/Reload_Power_Pickup.tscn"),
+	preload("res://Entities/PowerUps/Speed_Power_Pickup.tscn"),
+	preload("res://Entities/PowerUps/Stronger_Bullet_Pickup.tscn")
+	]
+var ammoPickup = preload("res://Entities/PowerUps/Ammo_Pickup.tscn")
 
 
 func _ready():
@@ -70,3 +81,18 @@ func _on_ammo_changed_player_2(ammo):
 
 func _on_bulletIndex_changed_player_2(bulletIndex):
 	ui.changeBulletType(2, bulletIndex)
+
+
+func spawnItem(position):
+	rng.randomize()
+	items.shuffle ()
+	var item = items[0].instance()
+	item.position = position
+	add_child(item)
+	item.start()
+	var ammoAmount = rng.randi_range(1, 3)
+	for i in ammoAmount:
+		var ammo = ammoPickup.instance()
+		ammo.position = position
+		add_child(ammo)
+		ammo.start()

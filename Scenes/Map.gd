@@ -24,14 +24,26 @@ func _ready():
 	player_2.connect("bulletIndex_changed", self, "_on_bulletIndex_changed_player_2")
 	player_2.connect("tank_died", self, "_on_Tank_died")
 
+var p1 = 0
+var p2 = 0
 
 func _on_Tank_died(player):
 	if player == "_2":
 		print("Player 2 died")
-		ui.gameOver(1)
+		p1 = 1
 	else:
 		print("Player 1 died")
+		p2 = 1
+		
+		
+	if p1 && p2:
+		ui.gameOver("s have not")
+	elif p1 == 1 && p2 == 0:
+		ui.gameOver(1)
+	elif p2 ==1 && p1 == 0:
 		ui.gameOver(2)
+			
+			
 
 
 func _on_health_changed_player_1(health):

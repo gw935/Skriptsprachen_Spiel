@@ -10,8 +10,13 @@ func changeToLevelSelectionScreen():
 	get_tree().change_scene("res://Scenes/LevelSelectionScreen/LevelSelectionScreen.tscn")
 
 
+func changeToSettingsScreen():
+	get_tree().change_scene("res://Scenes/SettingsScreen/SettingsScreen.tscn")
+
+
 func _on_OptionsButton_pressed():
-	pass # TODO: open Options Menu
+	$FadeIn.show()
+	$FadeIn/AnimationPlayer.play("fade_into_SettingsScreen")
 
 
 func _on_ExitButton_pressed():

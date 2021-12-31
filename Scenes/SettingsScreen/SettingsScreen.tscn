@@ -1,0 +1,133 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/SettingsScreen/SettingsScreen.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Themes/DefTheme.tres" type="Theme" id=2]
+[ext_resource path="res://Assets/fonts/AlfaSlabOne-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scenes/LevelSelectionScreen/ReturnButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/TitleScreen/FadeIn.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 45
+outline_size = 2
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade_into_titlescreen_from_settings"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "changeToTitleScreen"
+} ]
+}
+
+[node name="SettingsScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options_Label" type="Label" parent="."]
+anchor_right = 1.0
+margin_bottom = 60.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = -3
+custom_fonts/font = SubResource( 1 )
+text = "Options"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sound_Volum_HSlider" type="HSlider" parent="."]
+margin_left = 300.0
+margin_top = 100.0
+margin_right = 550.0
+margin_bottom = 116.0
+min_value = -40.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sound_Volum_Label" type="Label" parent="."]
+margin_left = 45.0
+margin_top = 85.0
+margin_right = 279.0
+margin_bottom = 129.0
+rect_pivot_offset = Vector2( 117, 22 )
+theme = ExtResource( 2 )
+text = "Sound Volume:"
+
+[node name="ReturnButton" parent="." instance=ExtResource( 4 )]
+margin_left = 32.0
+margin_top = 314.0
+margin_right = 182.0
+margin_bottom = 344.0
+rect_min_size = Vector2( 150, 30 )
+
+[node name="FadeIn" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="AnimationPlayer" parent="FadeIn" index="0"]
+anims/fade_into_titlescreen_from_settings = SubResource( 2 )
+
+[connection signal="value_changed" from="Sound_Volum_HSlider" to="." method="_on_Sound_Volum_HSlider_value_changed"]
+[connection signal="pressed" from="ReturnButton" to="." method="_on_ReturnButton_pressed"]
+
+[editable path="FadeIn"]

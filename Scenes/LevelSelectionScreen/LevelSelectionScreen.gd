@@ -3,17 +3,17 @@ extends Control
 var level = [
 	"res://Scenes/Level_01.tscn",
 	"res://Scenes/Test_Level.tscn",
-	"res://Scenes/Splitscreen.tscn"
+	"res://Scenes/Level/Level_02/Level_02.tscn"
 ]
 var levelPictures = [
 	preload("res://Assets/PreviewLevel/preview_desert.png"),
 	preload("res://Assets/PreviewLevel/Preview_Mapname.png"),
-	preload("res://Assets/PreviewLevel/Preview_Mapname.png")
+	preload("res://Assets/PreviewLevel/preview_camping.png")
 ]
 var levelNames = [
 	"Level_1",
 	"Test_Level",
-	"Splitscreen"
+	"Level_2"
 ]
 
 var titleScreen = "res://Scenes/TitleScreen/TitleScreen.tscn"

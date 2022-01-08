@@ -1,2 +1,8 @@
+.import/
+export.cfg
+export_presets.cfg
 
-Assets\Music
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+Assets/Music

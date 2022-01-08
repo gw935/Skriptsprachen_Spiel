@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Tiles/roguelikeSheet.tres" type="TileSet" id=1]
 [ext_resource path="res://Entities/Tank.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/Walls/center_wall.tres" type="TileSet" id=7]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Map.gd" type="Script" id=9]
+[ext_resource path="res://Assets/Music/Tactical Combat Operations Full Version.wav" type="AudioStream" id=10]
 
 [node name="Level_02" type="Node2D"]
 script = ExtResource( 9 )
@@ -164,6 +165,10 @@ position = Vector2( 168, 184 )
 position = Vector2( 472, 184 )
 
 [node name="UI" parent="." instance=ExtResource( 8 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
 
 [editable path="Player_1"]
 [editable path="Player_2"]

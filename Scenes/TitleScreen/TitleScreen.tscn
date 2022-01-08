@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Themes/DefTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/TitleScreen/NewGameButton.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/fonts/AlfaSlabOne-Regular.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Scenes/TitleScreen/FadeIn.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/TitleScreen/TitleScreen.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Music/Tactical War Loop.wav" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 47
@@ -185,6 +186,10 @@ visible = false
 [node name="AnimationPlayer" parent="FadeIn" index="0"]
 anims/fade_into_LevelSelectionScreen = SubResource( 2 )
 anims/fade_into_SettingsScreen = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
 
 [connection signal="pressed" from="Menu/Buttons/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="Menu/Buttons/OptionsButton" to="." method="_on_OptionsButton_pressed"]

@@ -55,7 +55,6 @@ func shoot():
 	if can_shoot:
 		can_shoot = false
 		$Timer.start()
-		$Sfx.play()
 		var dir = Vector2(1, 0).rotated($Body/Barrel.global_rotation)
 		if ammo > 0 and bulletIndex != -1:
 			var newBullet = PickupBullet[bulletIndex].instance()
@@ -85,10 +84,7 @@ func take_damage(damage):
 	health = health - damage
 	
 	if health <= 0:
-		var death = Death.instance()
-		get_tree().get_root().add_child(death)
-		death.position = self.global_position
-		death.start()
+		
 		emit_signal("tank_died", player)
 	
 	emit_signal("health_changed", health)

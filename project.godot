@@ -11,9 +11,8 @@ config_version=4
 [application]
 
 config/name="TITLES_ARE_A_PAIN"
-run/main_scene="res://Scenes/TitleScreen/TitleScreen.tscn"
+run/main_scene="res://Scenes/Level_01.tscn"
 config/icon="res://icon.png"
-config/windows_native_icon="res://icon.png"
 
 [display]
 

@@ -1,8 +1,7 @@
 extends Particles2D
 
 func start():
-	emitting = true
-	$Sfx.play()
+	emitting = false
 
 
 func _on_Sfx_finished():

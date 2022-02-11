@@ -10,9 +10,10 @@ config_version=4
 
 [application]
 
-config/name="SkriptsprachenSpiel"
+config/name="TITLES_ARE_A_PAIN"
 run/main_scene="res://Scenes/TitleScreen/TitleScreen.tscn"
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.png"
 
 [display]
 
@@ -72,6 +73,7 @@ right={
 fire={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777350,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":75,"unicode":0,"echo":false,"script":null)
  ]
 }
 up_2={
